@@ -23,6 +23,11 @@ async function bootstrap() {
                 // }
             })
         }
+
+        if (message?.web_app_data?.data) {
+            const data = JSON.parse(message?.web_app_data?.data);
+            console.log(data);
+        }
     });
 
     bot.on("message", async (message) => {
