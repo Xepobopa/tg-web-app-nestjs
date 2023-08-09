@@ -4,11 +4,11 @@ import {ValidationPipe} from "@nestjs/common";
 import {Bot} from "./bot";
 
 async function bootstrap() {
-    const app = await NestFactory.create(AppModule);
+    const app = await NestFactory.create(AppModule, { cors: true });
     const server = await app.listen(5000);
     const eduCompanion: Bot = new Bot();
 
-    app.enableCors({credentials: true, origin: true});
+    //app.enableCors({ origin: '*' });
     app.useGlobalPipes(new ValidationPipe());
 
     const router = server._events.request._router;
