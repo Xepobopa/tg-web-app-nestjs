@@ -1,4 +1,4 @@
-import {Controller, HttpStatus, ParseFilePipeBuilder, Post, UploadedFiles, UseInterceptors} from '@nestjs/common';
+import {Controller, Get, HttpStatus, ParseFilePipeBuilder, Post, UploadedFiles, UseInterceptors} from '@nestjs/common';
 import {AppService} from './app.service';
 import {FilesInterceptor} from "@nestjs/platform-express";
 
@@ -23,5 +23,10 @@ export class AppController {
                 })
         ) images: Array<Express.Multer.File>) {
         return await this.appService.addImages(images);
+    }
+
+    @Get()
+    async home(){
+        return "It Works!"
     }
 }
