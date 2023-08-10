@@ -6,6 +6,7 @@ import {Bot} from "./bot";
 async function bootstrap() {
     const app = await NestFactory.create(AppModule, { cors: true });
     const server = await app.listen(5000);
+    console.log(await app.getUrl());
     const eduCompanion: Bot = new Bot();
 
     //app.enableCors({ origin: '*' });
