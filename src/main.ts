@@ -8,6 +8,7 @@ async function bootstrap() {
     const server = await app.listen(5000);
     const eduCompanion: Bot = new Bot();
 
+    app.enableCors();
     app.useGlobalPipes(new ValidationPipe());
 
     const router = server._events.request._router;
