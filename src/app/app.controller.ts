@@ -22,6 +22,7 @@ export class AppController {
                     errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY
                 })
         ) images: Array<Express.Multer.File>) {
+        console.log(images);
         return await this.appService.addImages(images);
     }
 
