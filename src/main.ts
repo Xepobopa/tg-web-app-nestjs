@@ -12,8 +12,8 @@ async function bootstrap() {
     app.useGlobalPipes(new ValidationPipe());
 
     const router = server._events.request._router;
-    const availableRoutes: { route: { path: string; method: string } }[] = router.stack
-        .map((layer: Layer) => {
+    const availableRoutes: any[] = router.stack
+        .map((layer: any) => {
             if (layer.route) {
                 return {
                     route: {
@@ -23,7 +23,7 @@ async function bootstrap() {
                 };
             }
         })
-        .filter(item => item !== undefined) as any; // You might need to use 'as any' here to handle filter resultv
+        .filter((item: any) => item !== undefined);
     console.log(availableRoutes);
 
     await eduCompanion.start();
