@@ -2,6 +2,8 @@ import {AppModule} from "./app/app.module";
 import {NestFactory} from "@nestjs/core";
 import {ValidationPipe} from "@nestjs/common";
 import {Bot} from "./bot";
+import {Repository} from "typeorm";
+import {HomeworkEntity} from "./app/entities/homework.entity";
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule, { cors: true });

@@ -1,6 +1,18 @@
-import {Controller, Get, HttpStatus, ParseFilePipeBuilder, Post, UploadedFiles, UseInterceptors} from '@nestjs/common';
+import {
+    Body,
+    Controller,
+    Get,
+    HttpStatus,
+    ParseFilePipeBuilder,
+    Post,
+    Query,
+    UploadedFiles,
+    UseInterceptors
+} from '@nestjs/common';
 import {AppService} from './app.service';
 import {FilesInterceptor} from "@nestjs/platform-express";
+import {HomeworkQueryDto} from "./dto/homework-query.dto";
+import {CreateHomeworkDto} from "./dto/create-homework.dto";
 
 @Controller()
 export class AppController {
@@ -29,5 +41,16 @@ export class AppController {
     @Get()
     async home(){
         return "It Works!"
+    }
+
+    @Get('get')
+    async getHomeworkByQuery(@Query() query: HomeworkQueryDto) {
+        console.log("creating...")
+        return await this.appService.getHomeworkByQuery(query);
+    }
+
+    @Post('create')
+    async createHomework(@Body() hw: CreateHomeworkDto) {
+        console.log(hw);
     }
 }
